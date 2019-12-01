@@ -16,4 +16,8 @@ export class DashboardComponent implements OnInit {
     this.state.loadArticles();
   }
 
+  search(searchText: string) {
+    this.state.search(searchText);
+  }
+
 }

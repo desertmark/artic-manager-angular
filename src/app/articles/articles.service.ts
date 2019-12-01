@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators'
 import { Observable } from 'rxjs';
+import { faThumbsDown, faThList } from '@fortawesome/free-solid-svg-icons';
 
 export interface Category {
   description: string;
@@ -21,7 +22,17 @@ export interface ArticlesResponse {
   totalSize: number;
 }
 
-
+export interface ArticlesFilter {
+  page?: string;
+  size?: string;
+  code?: string;
+  description?: string;
+  categoryName?: string;
+}
+const defaultArticlesFilter: ArticlesFilter = {
+  page: "0",
+  size: "10",
+}
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +53,12 @@ export class ArticlesService {
         page,
         size
       }
+    }).pipe(take(1));
+  }
+
+  search(filters: ArticlesFilter = defaultArticlesFilter) {
+    return this.http.post<ArticlesResponse>(`${this.apiUrl}/articles/search`, {
+      ...filters
     }).pipe(take(1));
   }
 }

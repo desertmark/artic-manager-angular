@@ -1,0 +1,5 @@
+<div *ngIf="isLoading" [class]="'spinner-border text-'+color" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<ng-content *ngIf="!isLoading"></ng-content>
