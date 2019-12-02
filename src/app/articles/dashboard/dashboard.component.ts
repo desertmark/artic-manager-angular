@@ -9,6 +9,9 @@ import { faMountain } from '@fortawesome/free-solid-svg-icons';
 })
 export class DashboardComponent implements OnInit {
   faMountain = faMountain
+  activePage = 1;
+  size = 10;
+  searchText = '';
   constructor(public state: DashboardState) { }
 
   ngOnInit() {
@@ -17,7 +20,13 @@ export class DashboardComponent implements OnInit {
   }
 
   search(searchText: string) {
-    this.state.search(searchText);
+    this.searchText = searchText;
+    this.state.search(searchText, this.activePage, this.size);
   }
+
+  loadPage(page: number) {
+    this.activePage = page;
+    this.state.search(this.searchText, page, this.size)
+  } 
 
 }

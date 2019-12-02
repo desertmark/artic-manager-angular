@@ -6,10 +6,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
+import { PaginationComponent } from './pagination/pagination.component';
 const COMPONENTS = [
   TopBarComponent,
   SearchBarComponent,
   LoadingComponent,
+  PaginationComponent
 ]
 @NgModule({
   declarations: [
